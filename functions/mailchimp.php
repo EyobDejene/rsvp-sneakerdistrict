@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if($email && $name) {
 
-        // echo the message
         if (CountSubscribers($apiKey,$listId) < $max_subscribers) {
             if (CheckSubscriber($apiKey, $listId, $email) == 400) {
                 //Create mailchimp API url
@@ -28,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     ]
                 );
                 $jsonString = json_encode($data);
-                // send a HTTP POST request with curl
+                // send a HTTP PUT request with curl
                 $ch = curl_init($url);
                 curl_setopt($ch, CURLOPT_USERPWD, 'user:' . $apiKey);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
@@ -64,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $dataCenter = substr($apiKey, strpos($apiKey, '-') + 1);
         $url = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listId;
 
-        // send a HTTP POST request with curl
+        // send a HTTP GET request with curl
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_USERPWD, 'user:' . $apiKey);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
@@ -97,7 +96,7 @@ function CountSubscribers($apiKey,$listId){
     $dataCenter = substr($apiKey, strpos($apiKey, '-') + 1);
     $url = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listId;
 
-    // send a HTTP POST request with curl
+    // send a HTTP GET request with curl
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_USERPWD, 'user:' . $apiKey);
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
@@ -124,7 +123,7 @@ function CheckSubscriber($apiKey,$listId,$email){
             'email_address' => $email
         );
     $jsonString = json_encode($data);
-    // send a HTTP POST request with curl
+    // send a HTTP PUT request with curl
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_USERPWD, 'user:' . $apiKey);
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
