@@ -1,7 +1,7 @@
 <?php
 // API to mailchimp ########################################################
 $apiKey = '49c8b70a7d7aaf01cd9b1dcac76e475b-us14';
-$listId = '96961aff0a';
+$listId = '965e7e9012';
 $max_subscribers = 150;
 
 // insert subscribers
@@ -40,16 +40,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                 curl_close($ch);
 
-                $msg = 'See you at the event!';
+                if(http_response_code($httpCode['status']) == 200)
+                {
+                    $msg = 'See you at the event!';
+                }else{
+                    header('HTTP/1.1 500 Internal Server Error');
+                    header('Content-Type: application/json; charset=UTF-8');
+                    $msg = 'Something went wrong please try again!';
+                }
+
             } else {
-                header('HTTP/1.1 500 Internal Server Error');
-                header('Content-Type: application/json; charset=UTF-8');
-                $msg = 'You are already on the RSVP list!';
+                if(http_response_code($httpCode['status']) == 200) {
+                    header('HTTP/1.1 500 Internal Server Error');
+                    header('Content-Type: application/json; charset=UTF-8');
+                    $msg = 'You are already on the RSVP list!';
+                }else{
+                    header('HTTP/1.1 500 Internal Server Error');
+                    header('Content-Type: application/json; charset=UTF-8');
+                    $msg = 'Something went wrong checking subscriber!';
+                }
             }
         } else {
-            header('HTTP/1.1 500 Internal Server Error');
-            header('Content-Type: application/json; charset=UTF-8');
-            $msg = 'RSVP is Closed!';
+            if(http_response_code($httpCode['status']) == 200){
+                header('HTTP/1.1 500 Internal Server Error');
+                header('Content-Type: application/json; charset=UTF-8');
+                $msg = 'RSVP is Closed!';
+            }else{
+                header('HTTP/1.1 500 Internal Server Error');
+                header('Content-Type: application/json; charset=UTF-8');
+                $msg = 'Something went wrong checking rsvp status!';
+            }
+
         }
     }
     // echo the message
@@ -78,14 +99,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $subscriber_array = json_decode($result);
         $subscriber_count = $subscriber_array->stats->member_count;
 
-        //Collecting the status
-        switch ($httpCode) {
-            case 200:
-                $msg = $subscriber_count;
-                break;
-            default:
-                $msg = 'Oops, please try again.';
-                break;
+        if(http_response_code($httpCode['status']) == 200){
+            $msg = $subscriber_count;
+        }else{
+            header('HTTP/1.1 500 Internal Server Error');
+            header('Content-Type: application/json; charset=UTF-8');
+            $msg = 'Something went wrong with counting subscribers!';
         }
 
         echo ($msg);
@@ -105,12 +124,21 @@ function CountSubscribers($apiKey,$listId){
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     $result = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
     $subscriber_array = json_decode($result);
     $subscriber_count = $subscriber_array->stats->member_count;
 
-    return $subscriber_count;
+    if(http_response_code($httpCode['status']) == 200){
+        $msg = $subscriber_count;
+    }else{
+        header('HTTP/1.1 500 Internal Server Error');
+        header('Content-Type: application/json; charset=UTF-8');
+        $msg = 'Something went wrong with counting subscribers!';
+    }
+
+    return $msg;
 }
 
 // check if  subscriber exist
@@ -136,7 +164,18 @@ function CheckSubscriber($apiKey,$listId,$email){
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
     $subscriber = json_decode($result);
-    return $subscriber->status;
+
+
+    if(http_response_code($httpCode['status']) == 200){
+        $msg = $subscriber->status;
+    }else{
+        header('HTTP/1.1 500 Internal Server Error');
+        header('Content-Type: application/json; charset=UTF-8');
+        $msg = 'Something went wrong checking subscriber!';
+    }
+
+
+    return $msg;
 }
 
 
