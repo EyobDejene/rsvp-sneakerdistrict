@@ -64,7 +64,7 @@ body{
     left: 1rem;
     padding: 2rem;
     transform: scale(1.2);
-    background: url(../images/background/Adidas-Nite-Jogger-Editorial-5.jpg) no-repeat center center fixed;
+    background: url(../images/background/Adidas-Nite-Jogger-Editorial-18.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -566,7 +566,7 @@ a{
 @media (max-width:770px) {
 
     body{
-        background: url(../images/background/Adidas-Nite-Jogger-Editorial-32_2.jpg) no-repeat center center fixed;
+        background: url(../images/background/Adidas-Nite-Jogger-Editorial-20.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;

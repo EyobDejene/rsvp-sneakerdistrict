@@ -74,7 +74,7 @@
             <div class="grid">
                 <fieldset>
                     <legend><h1>sneaker district antwerp</h1>
-                        <span><h2>1 year anniversary</h2></span>
+                        <span><h2>Bus RSVP</h2></span>
                     </legend>
 
                     <!-- succes message box -->
@@ -94,9 +94,9 @@
                     <div class="fields">
                         <ul>
                             <li><a target="_blank"
-                                   href="https://www.google.com/maps/place/Sneaker+District/@51.215836,4.3939847,18z/data=!3m1!4b1!4m5!3m4!1s0x47c3f6f3bb618735:0x9f2fdda474fc4756!8m2!3d51.215836!4d4.395079">
-                                    <span class="detail-title">Location</span>
-                                    <span>Kloosterstraat 55 <br> 2000 Antwerpen</span>
+                                   href="https://goo.gl/maps/8u4xbvJEyAz">
+                                    <span class="detail-title">Pick-up Location</span>
+                                    <span>Generaal Vetterstraat 78b<br>1059 BW Amsterdam</span>
                                 </a></li>
                             <li><a>
                                     <span class="detail-title">Date</span>

@@ -1,5 +1,5 @@
 // settings Maxsubscribers
-var max_subscribers = 150;
+var max_subscribers = 50;
 
 // submit form
 document.getElementById("submit").addEventListener("click", function (event) {
