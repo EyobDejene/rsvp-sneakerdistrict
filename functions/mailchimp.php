@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 if(http_response_code($httpCode['status']) == 200)
                 {
-                    $msg = 'See you at the event!';
+                    $msg = 'See you at the pick-up point!';
                 }else{
                     header('HTTP/1.1 500 Internal Server Error');
                     header('Content-Type: application/json; charset=UTF-8');
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if(http_response_code($httpCode['status']) == 200) {
                     header('HTTP/1.1 500 Internal Server Error');
                     header('Content-Type: application/json; charset=UTF-8');
-                    $msg = 'You are already on the RSVP list!';
+                    $msg = 'You are already on the bus RSVP list!';
                 }else{
                     header('HTTP/1.1 500 Internal Server Error');
                     header('Content-Type: application/json; charset=UTF-8');
