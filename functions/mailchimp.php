@@ -1,7 +1,7 @@
 <?php
 // API to mailchimp ########################################################
 $apiKey = '49c8b70a7d7aaf01cd9b1dcac76e475b-us14';
-$listId = '965e7e9012';
+$listId = '5d321080aa';
 $max_subscribers = 50;
 
 // insert subscribers

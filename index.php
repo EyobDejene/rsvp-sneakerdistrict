@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RSVP | Sneaker District Antwerp</title>
+    <title>Bus RSVP | Sneaker District Antwerp</title>
     <link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -104,7 +104,7 @@
                                 </a></li>
                             <li><a>
                                     <span class="detail-title">Time</span>
-                                    <span>18:00 - 21:30</span>
+                                    <span>15:30</span>
                                 </a></li>
                         </ul>
 
