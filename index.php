@@ -96,7 +96,7 @@
                             <li><a target="_blank"
                                    href="https://goo.gl/maps/8u4xbvJEyAz">
                                     <span class="detail-title">Pick-up Location</span>
-                                    <span>Generaal Vetterstraat 78b<br>1059 BW Amsterdam</span>
+                                    <span>Generaal Vetterstraat 78A<br>1059 BW Amsterdam</span>
                                 </a></li>
                             <li><a>
                                     <span class="detail-title">Date</span>
